@@ -36,319 +36,385 @@ interface Template {
 
 const workflowSteps: WorkflowStep[] = [
   {
-    id: "research-setup",
-    title: "Research Environment Setup",
-    description: "Create a dedicated workspace and import relevant documents",
-    phase: "Preparation",
-    estimatedTime: "30 minutes",
+    id: "1",
+    title: "1. Planning Phase",
+    description: "Research Data Assessment and Pipeline Architecture Planning",
+    phase: "Planning",
+    estimatedTime: "2-3 hours",
     isCompleted: false,
-    content: `Create a dedicated workspace in NotebookLM or similar tool and import:
-• Previous successful grant examples
-• Funder guidelines and priorities  
-• Your preliminary data and publications
-• Any feedback from previous submissions`,
-    tips: [
-      "Organize all documents in a single workspace for easy access",
-      "Use consistent naming conventions for your files",
-      "Keep original guidelines documents separate from your working drafts"
-    ]
-  },
-  {
-    id: "funding-analysis",
-    title: "Funding Alignment Analysis",
-    description: "Analyze how your research aligns with the funder's priorities",
-    phase: "Preparation", 
-    estimatedTime: "45 minutes",
-    isCompleted: false,
-    content: `Use AI to analyze the alignment between your research and the funder's priorities. This critical step ensures your proposal speaks the funder's language and addresses their specific interests.
+    content: `
+## Planning Your Research Data Pipeline
+
+This phase establishes the foundation for robust, reproducible data workflows. Take time to:
+
+• Assess your data types, volumes, and sources
+• Design appropriate pipeline architecture
+• Identify necessary tools and technologies
+• Plan for quality control checkpoints
+• Consider collaboration requirements
+• Establish data security and privacy protocols
+
+Proper planning prevents data chaos and ensures FAIR principles (Findable, Accessible, Interoperable, Reusable).
 
 **Use this prompt:**
 
-Analyze my research focus on [YOUR TOPIC] and the priorities of [FUNDING AGENCY] as described in the following guidelines: [PASTE GUIDELINES]. 
-Identify:
-1. 3-5 key alignment points between my research and their priorities
-2. Potential gaps or misalignments I should address
-3. Specific terminology and frameworks the funder values`,
+I need to create a research data pipeline for my project on [YOUR RESEARCH TOPIC]. 
+Help me assess my data needs by asking me key questions about:
+
+1. The types of data I'll be collecting/using (e.g., numerical, text, images, etc.)
+2. Approximate data volumes (records, file sizes)
+3. Data sources and formats (e.g., instruments, surveys, existing datasets)
+4. Frequency of data collection/updates
+5. Key variables or data points of interest
+6. Intended analyses and outputs
+7. Collaboration requirements (who needs access and when)
+8. Any field-specific standards I should follow
+9. Computing resources available to me
+10. Data security or privacy requirements
+
+For each question, explain why it's important for planning my pipeline.
+    `,
     tips: [
-      "Focus on terminology the funder uses in their guidelines",
-      "Identify specific programs or initiatives your work supports",
-      "Note any recent announcements or priority shifts from the funder"
+      "Start small with one data source before expanding to multiple sources",
+      "Design with reproducibility in mind from the beginning",
+      "Consider future scalability when selecting tools and approaches"
     ]
   },
   {
-    id: "proposal-structure",
-    title: "Proposal Structure Generation", 
-    description: "Create a tailored outline based on funder guidelines",
-    phase: "Strategic Planning",
-    estimatedTime: "30 minutes",
+    id: "2",
+    title: "2. Structure Phase",
+    description: "Folder Structure Creation and Metadata Schema Development",
+    phase: "Structure",
+    estimatedTime: "3-4 hours",
     isCompleted: false,
-    content: `Generate a customized proposal structure that follows the funder's specific requirements while highlighting your research strengths.
+    content: `
+## Structuring Your Data Pipeline
+
+Create organized, standardized structures that support reproducible research:
+
+Key components to establish:
+• Logical folder hierarchies for data and documentation
+• Consistent naming conventions across the pipeline
+• Comprehensive metadata schemas
+• Version control considerations
+• Documentation templates for each major component
+
+Well-structured data foundations make collaboration seamless and ensure long-term accessibility.
 
 **Use this prompt:**
 
-Based on these [FUNDER] guidelines, create a detailed outline for my grant proposal on [RESEARCH TOPIC]. Include:
-1. All required sections with word/page count allocations
-2. Key points to emphasize in each section
-3. Suggested data visualization opportunities
-4. References to preliminary data I should include`,
+Help me create a comprehensive folder structure for my research data pipeline with these characteristics:
+
+Research field: [YOUR FIELD]
+Data types: [LIST DATA TYPES]
+Project duration: [TIMEFRAME]
+Team size: [NUMBER] researchers
+Analysis types: [LIST ANALYSIS TYPES]
+
+Include folders for:
+1. Raw data (with appropriate substructures)
+2. Processed data (with version control considerations)
+3. Analysis scripts and outputs
+4. Documentation
+5. Metadata
+6. Results and visualizations
+7. Any field-specific requirements
+
+For each main folder, explain:
+- Its purpose
+- Naming conventions to follow
+- What belongs (and doesn't belong) there
+- Any special considerations for that data type
+
+Also, suggest a README template for each key folder.
+    `,
     tips: [
-      "Pay attention to word/page limits for each section",
-      "Note required vs. optional sections",
-      "Plan for visual elements and data presentations"
+      "Use descriptive, self-documenting folder and file names",
+      "Separate raw data from processed data to preserve originals",
+      "Create metadata schemas before collecting data, not after"
     ]
   },
   {
-    id: "research-narrative",
-    title: "Develop Core Research Narrative",
-    description: "Craft a compelling story that connects problem to solution",
-    phase: "Strategic Planning",
-    estimatedTime: "60 minutes", 
+    id: "3",
+    title: "3. Ingestion Phase",
+    description: "Data Collection Protocol and Automated Data Ingestion",
+    phase: "Ingestion",
+    estimatedTime: "4-5 hours",
     isCompleted: false,
-    content: `Develop the central narrative that will thread through your entire proposal, connecting the significance of the problem to your innovative solution.
+    content: `
+## Setting Up Data Ingestion
+
+Establish consistent, reliable processes for bringing data into your pipeline:
+
+• **Standardized collection protocols** - Ensure consistency across sources
+• **Automated ingestion processes** - Reduce manual errors and save time
+• **Initial quality screening** - Catch issues early in the pipeline
+• **Data preservation** - Maintain raw data integrity
+• **Comprehensive logging** - Track all ingestion activities
+
+Robust ingestion processes are the foundation of reliable data pipelines.
 
 **Use this prompt:**
 
-Help me craft a compelling 2-paragraph research narrative for a [FUNDER] grant that:
-1. Establishes the significance of [PROBLEM]
-2. Identifies the gap in current approaches
-3. Introduces my innovative approach using [YOUR METHOD]
-4. Emphasizes potential impact in terms that align with [FUNDER]'s priorities`,
+Create a detailed data collection protocol for my research on [TOPIC] that ensures consistency and quality.
+
+My data sources include:
+[LIST YOUR DATA SOURCES]
+
+For this protocol, include:
+1. Step-by-step procedures for each data source
+2. Required equipment/software configurations
+3. Calibration or setup procedures
+4. Sampling methods and frequencies
+5. Data capture forms or templates
+6. Quality checks during collection
+7. Backup procedures during collection
+8. Troubleshooting common issues
+9. Documentation requirements during collection
+10. Handling of edge cases or unexpected scenarios
+
+Format this as a clear standard operating procedure that team members can follow precisely.
+    `,
     tips: [
-      "Start with a hook that grabs reviewer attention",
-      "Clearly articulate the gap your research fills",
-      "Connect to broader societal or scientific impacts"
+      "Test ingestion processes with sample data before full implementation",
+      "Always preserve original raw data in unmodified form",
+      "Build in validation checks at the point of data entry"
     ]
   },
   {
-    id: "background-section",
-    title: "Background & Significance Section",
-    description: "Establish the importance and context of your research",
-    phase: "Content Generation",
-    estimatedTime: "90 minutes",
+    id: "4",
+    title: "4. Cleaning Phase",
+    description: "Data Cleaning Strategy and AI-Powered Data Processing",
+    phase: "Cleaning",
+    estimatedTime: "5-6 hours",
     isCompleted: false,
-    content: `Draft a compelling background section that establishes the critical importance of your research problem and positions your approach as the logical next step.
+    content: `
+## Data Cleaning and Quality Assurance
+
+Transform messy, inconsistent data into analysis-ready datasets:
+
+• **Quality assessment** - Identify missing values, outliers, and inconsistencies
+• **Standardization** - Harmonize formats, units, and coding schemes
+• **Error correction** - Address data entry errors and anomalies
+• **Documentation** - Record all cleaning decisions for reproducibility
+• **Validation** - Verify cleaning effectiveness with quality reports
+
+AI-assisted cleaning can automate routine tasks while preserving data integrity.
 
 **Use this prompt:**
 
-Draft a background and significance section (approximately 500 words) for my grant proposal on [RESEARCH TOPIC] that:
-1. Establishes the importance of the problem
-2. Summarizes current knowledge and approaches
-3. Identifies specific gaps or limitations
-4. Explains how my approach addresses these limitations
-5. Connects to broader impacts valued by [FUNDER]
+Based on these common issues in my research data:
+[LIST DATA QUALITY ISSUES]
 
-Based on these key papers:
-[PASTE 3-5 REFERENCE ABSTRACTS]`,
+Help me develop a comprehensive data cleaning strategy that:
+1. Addresses missing values appropriately for my analysis needs
+2. Detects and handles outliers using statistically sound methods
+3. Standardizes formats and units consistently
+4. Corrects common errors and inconsistencies
+5. Validates data against expected ranges and relationships
+6. Documents all cleaning actions for reproducibility
+7. Preserves raw data while creating cleaned versions
+8. Generates quality reports before and after cleaning
+
+For each cleaning action, provide:
+- The rationale for the approach
+- Potential impacts on analysis
+- Implementation guidance
+- Documentation requirements
+    `,
     tips: [
-      "Use recent, high-impact citations",
-      "Avoid simply summarizing literature - synthesize it",
-      "End with a clear statement of the gap you'll address"
+      "Always preserve original raw data before any cleaning operations",
+      "Document all cleaning decisions and their rationale",
+      "Validate cleaned data against expected distributions and relationships"
     ]
   },
   {
-    id: "aims-objectives", 
-    title: "Aims and Objectives",
-    description: "Define clear, measurable, and achievable research goals",
-    phase: "Content Generation",
-    estimatedTime: "75 minutes",
+    id: "5",
+    title: "5. Transformation Phase",
+    description: "Data Transformation Planning and AI-Assisted Implementation",
+    phase: "Transformation",
+    estimatedTime: "4-5 hours",
     isCompleted: false,
-    content: `Create specific aims that are independent, feasible, and collectively address your research question while fitting within the proposed timeframe.
+    content: `
+## Data Transformation and Feature Engineering
+
+Convert cleaned data into analysis-ready formats optimized for your research goals:
+
+• **Reshaping and restructuring** - Convert between wide and long formats
+• **Feature engineering** - Create meaningful derived variables
+• **Aggregation and summarization** - Combine data at appropriate levels
+• **Normalization and standardization** - Prepare for statistical analysis
+• **Integration** - Merge multiple datasets coherently
+
+Well-planned transformations enhance analytical power while maintaining data integrity.
 
 **Use this prompt:**
 
-Based on my research focus [BRIEF DESCRIPTION], generate 3 specific aims for a [FUNDER] grant proposal that:
-1. Are clear, measurable, and achievable within [TIMEFRAME]
-2. Build logically on each other but aren't dependent on earlier aims' success
-3. Align with [FUNDER]'s priorities
-4. Collectively address the research question: [QUESTION]
+For my research project analyzing [TOPIC], I need to transform my cleaned data into analysis-ready formats.
 
-For each aim, include:
-- A concise title
-- 1-2 sentence overview
-- 2-3 specific objectives or tasks`,
+My raw data structure is:
+[DESCRIBE CURRENT DATA STRUCTURE]
+
+I need final data structures for:
+[DESCRIBE NEEDED OUTPUT FORMATS]
+
+Help me plan appropriate transformations including:
+1. Reshaping data (wide-to-long, long-to-wide, etc.)
+2. Feature engineering needs
+3. Aggregation or summarization steps
+4. Joining or merging multiple datasets
+5. Categorization or binning of variables
+6. Normalization or standardization requirements
+7. Creation of derived variables
+8. Appropriate sequence of transformations
+9. Version control approach for transformed datasets
+
+For each transformation, explain the rationale and potential impacts on analysis.
+    `,
     tips: [
-      "Each aim should be testable and have clear success metrics",
-      "Aims should build on each other but not depend on prior success",
-      "Include potential alternative approaches for risky elements"
+      "Plan transformation sequences carefully to avoid data loss",
+      "Test transformations on sample data before applying to full datasets",
+      "Version control both code and transformed datasets"
     ]
   },
   {
-    id: "methods-section",
-    title: "Methods Section",
-    description: "Detail your experimental approach and methodology",
-    phase: "Content Generation", 
-    estimatedTime: "120 minutes",
+    id: "6",
+    title: "6. Validation Phase",
+    description: "Data Validation Framework and Automated Quality Reports",
+    phase: "Validation",
+    estimatedTime: "3-4 hours",
     isCompleted: false,
-    content: `Provide detailed methodology that demonstrates feasibility while showing innovation and rigor in your experimental design.
+    content: `
+## Data Validation and Quality Assurance
+
+Establish comprehensive validation to ensure data reliability and fitness for analysis:
+
+• **Multi-level validation** - Input, process, and output checks
+• **Quality metrics** - Quantitative measures of data integrity
+• **Automated reporting** - Regular quality assessments
+• **Threshold management** - Acceptable quality criteria
+• **Issue flagging** - Early detection of problems
+
+Robust validation frameworks prevent downstream analytical errors and ensure research integrity.
 
 **Use this prompt:**
 
-Draft a methods section for Aim [NUMBER]: [AIM TITLE] that:
-1. Outlines the experimental approach
-2. Describes specific techniques, analyses, and tools
-3. Addresses potential challenges and alternative approaches
-4. Includes success metrics and validation strategies
-5. References preliminary data showing feasibility
+Help me develop a thorough validation framework for my research data pipeline that:
 
-Technical details to include:
-[PASTE YOUR METHODS NOTES]`,
+1. Defines quality criteria specific to my research question:
+   [BRIEFLY DESCRIBE RESEARCH QUESTION]
+
+2. Includes checks for:
+   - Completeness (missing data detection)
+   - Accuracy (error detection)
+   - Consistency (internal logic validation)
+   - Conformity (format and standard compliance)
+   - Uniqueness (duplicate detection)
+   - Integrity (relationship validation)
+   - Timeliness (temporal validity)
+
+3. Establishes acceptable thresholds for each criterion
+4. Creates a scoring system for data quality
+5. Defines actions for different validation outcomes
+6. Incorporates both automated and manual validation components
+7. Generates validation reports for documentation
+
+Please structure this as a formal validation protocol I can implement.
+    `,
     tips: [
-      "Include preliminary data to show feasibility",
-      "Address potential technical challenges",
-      "Reference your expertise and available resources"
+      "Implement validation at multiple pipeline stages, not just at the end",
+      "Create both automated and manual validation processes",
+      "Track quality metrics over time to identify trends"
     ]
   },
   {
-    id: "budget-justification",
-    title: "Budget Justification",
-    description: "Create detailed budget with clear justifications",
-    phase: "Content Generation",
-    estimatedTime: "60 minutes", 
+    id: "7",
+    title: "7. Documentation Phase",
+    description: "Comprehensive Pipeline Documentation and Data Dictionary Creation",
+    phase: "Documentation",
+    estimatedTime: "4-5 hours",
     isCompleted: false,
-    content: `Develop a realistic budget that directly supports your research aims with clear justification for every expense.
+    content: `
+## Documentation and Knowledge Management
+
+Create comprehensive documentation that enables reproducibility and knowledge transfer:
+
+• **Pipeline documentation** - Architecture and component descriptions
+• **Data dictionaries** - Detailed variable and dataset documentation
+• **Processing logs** - Complete transformation history
+• **Usage guides** - Instructions for team members and future users
+• **Standards compliance** - Alignment with field-specific requirements
+
+Well-documented pipelines are essential for collaboration, reproducibility, and long-term maintenance.
 
 **Use this prompt:**
 
-Create a detailed budget justification for a [AMOUNT] [FUNDER] grant over [DURATION] years that includes:
-1. Personnel costs and roles (including [LIST KEY PERSONNEL])
-2. Equipment needs for [LIST METHODS]
-3. Supply costs
-4. Travel expenses for [CONFERENCES/FIELDWORK]
-5. Other relevant categories
+Help me create comprehensive documentation for my research data pipeline that would enable another researcher to understand and reproduce my workflow.
 
-For each item, provide 1-2 sentences explaining its necessity for the project.`,
+My pipeline includes:
+[SUMMARIZE KEY PIPELINE COMPONENTS]
+
+The documentation should include:
+1. Pipeline overview with visual representation
+2. Detailed descriptions of each component and its purpose
+3. Data dictionaries for all datasets
+4. Processing logs and transformation records
+5. Quality assurance procedures and results
+6. Technical specifications and dependencies
+7. Known limitations or issues
+8. Usage instructions for team members
+9. References to relevant standards or methods
+10. Version history and change management
+
+Format this documentation to be both human-readable and machine-actionable where possible.
+    `,
     tips: [
-      "Be specific about personnel time allocations",
-      "Include equipment maintenance and calibration costs",
-      "Factor in inflation for multi-year budgets"
+      "Document as you build, not after completion",
+      "Use version control for documentation as well as code",
+      "Create documentation that serves both current users and future maintainers"
     ]
   },
   {
-    id: "reviewer-analysis",
-    title: "Reviewer Perspective Analysis", 
-    description: "Review your draft from a critical reviewer's viewpoint",
-    phase: "Refinement",
-    estimatedTime: "45 minutes",
+    id: "8",
+    title: "8. Sharing Phase",
+    description: "Data Publication Planning and Collaboration Workflow Design",
+    phase: "Sharing",
+    estimatedTime: "3-4 hours",
     isCompleted: false,
-    content: `Take a step back and critically evaluate your proposal as an experienced reviewer would, identifying potential weaknesses and areas for improvement.
+    content: `
+## Data Sharing and Collaboration
+
+Prepare your data pipeline for effective sharing and collaborative use:
+
+• **Repository selection** - Choose appropriate platforms for your data
+• **Access controls** - Manage permissions and usage rights
+• **Publication preparation** - Format data for long-term accessibility
+• **Collaboration workflows** - Enable team-based data management
+• **Version management** - Track changes and updates systematically
+
+Effective sharing maximizes research impact and enables reproducible science.
 
 **Use this prompt:**
 
-You are an experienced grant reviewer for [FUNDER]. Review this draft section critically:
-[PASTE SECTION]
+Help me plan for effective sharing of my research data on [TOPIC] by:
 
-Provide feedback on:
-1. Scientific merit and innovation
-2. Methodology and approach
-3. Feasibility within timeframe and budget
-4. Alignment with funding priorities
-5. Clarity and organization
-6. Potential questions or concerns
+1. Identifying appropriate data repositories for [FIELD]
+2. Outlining preparation steps needed before sharing
+3. Recommending suitable file formats for long-term access
+4. Drafting clear data usage guidelines and restrictions
+5. Creating appropriate attribution and citation information
+6. Suggesting necessary documentation for external users
+7. Addressing any anonymization or privacy requirements
+8. Considering embargo periods or access controls needed
+9. Planning for version updates or corrections
+10. Preparing metadata for repository submission
 
-Be specific about both strengths and weaknesses.`,
+Consider that my sharing goals include [DESCRIBE GOALS] and my constraints include [DESCRIBE CONSTRAINTS].
+    `,
     tips: [
-      "Look for unsupported claims or logical gaps",
-      "Check that methodology matches stated aims",
-      "Ensure innovation is clearly articulated"
-    ]
-  },
-  {
-    id: "visual-assets",
-    title: "Visual Asset Development",
-    description: "Create figures, charts, and visual aids",
-    phase: "Refinement",
-    estimatedTime: "90 minutes",
-    isCompleted: false,
-    content: `Develop clear, professional visual elements that enhance understanding and make complex concepts accessible to reviewers.
-
-**Use this prompt:**
-
-Based on this textual description of [DATA/CONCEPT]:
-[PASTE DESCRIPTION]
-
-Suggest a visual representation that would strengthen my grant proposal by:
-1. Clarifying the complex concept of [CONCEPT]
-2. Making the information more accessible
-3. Providing a detailed diagram caption
-4. Suggesting an effective format (flowchart, graph, table, etc.)`,
-    tips: [
-      "Use consistent styling across all figures",
-      "Include detailed, informative captions",
-      "Make sure visuals are readable when printed in black and white"
-    ]
-  },
-  {
-    id: "executive-summary",
-    title: "Executive Summary Creation",
-    description: "Write a compelling summary that hooks reviewers",
-    phase: "Finalization",
-    estimatedTime: "45 minutes",
-    isCompleted: false,
-    content: `Craft an engaging executive summary that captures the essence of your proposal and motivates reviewers to read further.
-
-**Use this prompt:**
-
-Create a compelling executive summary (250 words) for my grant proposal on [TOPIC] that:
-1. Hooks the reviewer with the significance of the problem
-2. Clearly states my central hypothesis
-3. Briefly outlines my innovative approach and aims
-4. Emphasizes expected outcomes and broader impacts
-5. Uses accessible language while maintaining scientific precision`,
-    tips: [
-      "Start with the problem's significance",
-      "Clearly state your innovative approach",
-      "End with expected impact and broader implications"
-    ]
-  },
-  {
-    id: "coherence-check",
-    title: "Coherence and Flow Check",
-    description: "Ensure logical flow and consistency throughout",
-    phase: "Finalization",
-    estimatedTime: "60 minutes",
-    isCompleted: false,
-    content: `Review your complete proposal for logical consistency, smooth transitions, and a coherent narrative thread that connects all sections.
-
-**Use this prompt:**
-
-Review my complete grant proposal for coherence and flow:
-[PASTE FULL PROPOSAL]
-
-Identify:
-1. Any logical gaps between sections
-2. Inconsistent terminology or concepts
-3. Repetitive content that could be streamlined
-4. Missing transitions between major ideas
-5. Opportunities to strengthen the narrative thread`,
-    tips: [
-      "Check that conclusions match your stated aims",
-      "Ensure consistent terminology throughout",
-      "Verify that each section builds logically on previous ones"
-    ]
-  },
-  {
-    id: "final-qa",
-    title: "Final Quality Assurance",
-    description: "Comprehensive final review for submission readiness",
-    phase: "Finalization", 
-    estimatedTime: "90 minutes",
-    isCompleted: false,
-    content: `Conduct a thorough final review to ensure your proposal meets all requirements and presents your research in the best possible light.
-
-**Use this prompt:**
-
-Review this grant proposal for:
-1. Alignment with all [FUNDER] guidelines and requirements
-2. Consistency in formatting, references, and terminology
-3. Grammatical issues or awkward phrasing
-4. Balance between technical detail and accessibility
-5. Compelling first and last paragraphs in each section
-
-Suggest specific improvements for any issues found.`,
-    tips: [
-      "Double-check all formatting requirements",
-      "Verify all references are complete and correctly formatted",
-      "Have a colleague review for clarity and completeness"
+      "Plan for data sharing from the beginning, not as an afterthought",
+      "Choose repositories that align with your field's standards",
+      "Design collaboration workflows that scale with team growth"
     ]
   }
 ];
@@ -547,7 +613,7 @@ export function WorkflowBuilder({ workflowId }: WorkflowBuilderProps = {}) {
     
     toast({
       title: newCompleted ? "Step completed!" : "Step marked incomplete",
-      description: newCompleted ? "Great progress on your grant proposal!" : "Step marked as incomplete.",
+      description: newCompleted ? "Great progress on your data pipeline!" : "Step marked as incomplete.",
     });
   };
 
@@ -601,10 +667,10 @@ export function WorkflowBuilder({ workflowId }: WorkflowBuilderProps = {}) {
   return (
     <div className="space-y-8">
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold gradient-text">Grant Writing Workflow</h1>
+        <h1 className="text-4xl font-bold gradient-text">Data Analysis Workflow</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Follow this comprehensive AI-assisted workflow to dramatically accelerate and improve your grant writing process. 
-          Each step includes specific prompts and templates to guide you through creating compelling, fundable proposals.
+          Follow this comprehensive AI-assisted workflow to build robust, reproducible data pipelines for your research. 
+          Transform chaotic data practices into structured, efficient workflows.
         </p>
         {workflowData && (
           <div className="mt-6 p-4 bg-muted rounded-lg max-w-2xl mx-auto">
@@ -850,8 +916,8 @@ export function WorkflowBuilder({ workflowId }: WorkflowBuilderProps = {}) {
           <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-green-400 mb-2">Workflow Complete!</h2>
           <p className="text-muted-foreground">
-            Congratulations! You've completed all steps in the Grant Writing Workflow. 
-            Your proposal is now ready for final review and submission.
+            Congratulations! You've completed all steps in the Data Analysis Workflow. 
+            Your data pipeline is now ready for analysis and sharing.
           </p>
         </Card>
       )}
