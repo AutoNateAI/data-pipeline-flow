@@ -102,6 +102,7 @@ export type Database = {
           copy_count: number
           created_at: string
           id: string
+          is_featured: boolean
           tags: string[] | null
           title: string
           updated_at: string
@@ -113,6 +114,7 @@ export type Database = {
           copy_count?: number
           created_at?: string
           id?: string
+          is_featured?: boolean
           tags?: string[] | null
           title: string
           updated_at?: string
@@ -124,6 +126,7 @@ export type Database = {
           copy_count?: number
           created_at?: string
           id?: string
+          is_featured?: boolean
           tags?: string[] | null
           title?: string
           updated_at?: string
@@ -201,34 +204,40 @@ export type Database = {
         Row: {
           completed_at: string | null
           completed_steps: number[] | null
+          created_at: string
           current_step: number
           id: string
           started_at: string
           status: string
           updated_at: string
           user_id: string
+          workflow_data: Json | null
           workflow_id: string
         }
         Insert: {
           completed_at?: string | null
           completed_steps?: number[] | null
+          created_at?: string
           current_step?: number
           id?: string
           started_at?: string
           status?: string
           updated_at?: string
           user_id: string
+          workflow_data?: Json | null
           workflow_id: string
         }
         Update: {
           completed_at?: string | null
           completed_steps?: number[] | null
+          created_at?: string
           current_step?: number
           id?: string
           started_at?: string
           status?: string
           updated_at?: string
           user_id?: string
+          workflow_data?: Json | null
           workflow_id?: string
         }
         Relationships: [
