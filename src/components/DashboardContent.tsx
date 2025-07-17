@@ -175,8 +175,8 @@ export const DashboardContent = ({ onNavigate, onSelectWorkflow }: DashboardCont
         stepsCompleted.forEach((stepId: string) => {
           stepToWorkflowMap.set(stepId, {
             workflowId: workflow.id,
-            workflowName: workflowData?.name || workflowData?.title || 'Grant Workflow',
-            workflowType: workflowData?.funding_agency || 'Grant'
+            workflowName: workflowData?.name || workflowData?.title || 'Data Analysis Workflow',
+            workflowType: workflowData?.funding_agency || 'Data Analysis'
           });
         });
       });
@@ -237,7 +237,7 @@ export const DashboardContent = ({ onNavigate, onSelectWorkflow }: DashboardCont
           activity_type: 'workflow_update',
           activity_date: workflow.updated_at,
           metadata: {
-            workflowName: (workflow.workflow_data as any)?.name || (workflow.workflow_data as any)?.title || 'Grant Workflow'
+            workflowName: (workflow.workflow_data as any)?.name || (workflow.workflow_data as any)?.title || 'Data Analysis Workflow'
           }
         }))
       ].sort((a, b) => new Date(b.activity_date).getTime() - new Date(a.activity_date).getTime())
@@ -287,8 +287,8 @@ export const DashboardContent = ({ onNavigate, onSelectWorkflow }: DashboardCont
           if (stepsCompleted.includes(task.item_id)) {
             workflowInfo = {
               workflowId: workflow.id,
-              workflowName: workflowData?.name || workflowData?.title || 'Grant Workflow',
-              workflowType: workflowData?.funding_agency || 'Grant'
+              workflowName: workflowData?.name || workflowData?.title || 'Data Analysis Workflow',
+              workflowType: workflowData?.funding_agency || 'Data Analysis'
             };
           }
         });
@@ -324,7 +324,7 @@ export const DashboardContent = ({ onNavigate, onSelectWorkflow }: DashboardCont
             <Button variant="outline" onClick={handleBackToManager}>
               ← Back to Workflows
             </Button>
-            <h1 className="text-2xl font-bold">Grant Writing Workflow</h1>
+            <h1 className="text-2xl font-bold">Data Analysis Workflow</h1>
           </div>
           <Button variant="outline" onClick={() => signOut()}>
             <LogOut className="h-4 w-4 mr-2" />
@@ -340,7 +340,7 @@ export const DashboardContent = ({ onNavigate, onSelectWorkflow }: DashboardCont
     return (
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">My Grant Workflows</h1>
+          <h1 className="text-2xl font-bold">My Data Analysis Workflows</h1>
           <Button variant="outline" onClick={() => signOut()}>
             <LogOut className="h-4 w-4 mr-2" />
             Sign Out
@@ -360,7 +360,7 @@ export const DashboardContent = ({ onNavigate, onSelectWorkflow }: DashboardCont
             Welcome back, {userProfile?.display_name || 'Researcher'}!
           </h1>
           <p className="text-xl text-muted-foreground">
-            Continue your grant writing mastery journey
+            Continue your data analysis mastery journey
           </p>
         </div>
         <div className="flex items-center gap-4">
@@ -448,7 +448,7 @@ export const DashboardContent = ({ onNavigate, onSelectWorkflow }: DashboardCont
                 <div className="text-center py-8">
                   <CheckCircle2 className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
                   <p className="text-muted-foreground">No workflow tasks completed this week yet.</p>
-                  <p className="text-sm text-muted-foreground mt-2">Start working on your grant workflows to see your progress here!</p>
+                  <p className="text-sm text-muted-foreground mt-2">Start working on your data analysis workflows to see your progress here!</p>
                 </div>
               )}
             </div>
@@ -501,7 +501,7 @@ export const DashboardContent = ({ onNavigate, onSelectWorkflow }: DashboardCont
           <CardContent className="p-6 text-center">
             <GitBranch className="h-8 w-8 mx-auto mb-4" />
             <h3 className="font-semibold text-lg mb-2">Continue Current Workflow</h3>
-            <p className="text-blue-100 text-sm">{lastWorkflowId ? 'Continue your grant writing process' : 'Select a workflow to continue'}</p>
+            <p className="text-blue-100 text-sm">{lastWorkflowId ? 'Continue your data analysis process' : 'Select a workflow to continue'}</p>
           </CardContent>
         </Card>
         
@@ -509,7 +509,7 @@ export const DashboardContent = ({ onNavigate, onSelectWorkflow }: DashboardCont
           <CardContent className="p-6 text-center">
             <Target className="h-8 w-8 mx-auto mb-4" />
             <h3 className="font-semibold text-lg mb-2">View Workflows</h3>
-            <p className="text-blue-100 text-sm">Manage your grant projects</p>
+            <p className="text-blue-100 text-sm">Manage your data analysis projects</p>
           </CardContent>
         </Card>
         
