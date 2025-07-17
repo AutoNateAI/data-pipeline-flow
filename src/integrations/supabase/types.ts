@@ -21,6 +21,7 @@ export type Database = {
           id: string
           item_id: string
           item_type: string
+          parent_comment_id: string | null
           updated_at: string
           user_id: string
         }
@@ -30,6 +31,7 @@ export type Database = {
           id?: string
           item_id: string
           item_type: string
+          parent_comment_id?: string | null
           updated_at?: string
           user_id: string
         }
@@ -39,6 +41,7 @@ export type Database = {
           id?: string
           item_id?: string
           item_type?: string
+          parent_comment_id?: string | null
           updated_at?: string
           user_id?: string
         }
@@ -70,103 +73,157 @@ export type Database = {
       }
       profiles: {
         Row: {
+          avatar_url: string | null
+          bio: string | null
           created_at: string
           display_name: string | null
           id: string
+          institution: string | null
+          research_area: string | null
           title: string | null
+          total_prompts_copied: number | null
+          total_templates_copied: number | null
           updated_at: string
           user_id: string
+          weekly_streak: number | null
+          xp_points: number | null
         }
         Insert: {
+          avatar_url?: string | null
+          bio?: string | null
           created_at?: string
           display_name?: string | null
           id?: string
+          institution?: string | null
+          research_area?: string | null
           title?: string | null
+          total_prompts_copied?: number | null
+          total_templates_copied?: number | null
           updated_at?: string
           user_id: string
+          weekly_streak?: number | null
+          xp_points?: number | null
         }
         Update: {
+          avatar_url?: string | null
+          bio?: string | null
           created_at?: string
           display_name?: string | null
           id?: string
+          institution?: string | null
+          research_area?: string | null
           title?: string | null
+          total_prompts_copied?: number | null
+          total_templates_copied?: number | null
           updated_at?: string
           user_id?: string
+          weekly_streak?: number | null
+          xp_points?: number | null
         }
         Relationships: []
       }
       prompts: {
         Row: {
-          category: string | null
+          category: string
           content: string
           copy_count: number
           created_at: string
+          created_by: string | null
+          description: string | null
+          difficulty_level: string | null
+          dislike_count: number | null
+          estimated_time: string | null
           id: string
           is_featured: boolean
+          like_count: number | null
           tags: string[] | null
           title: string
           updated_at: string
-          user_id: string
         }
         Insert: {
-          category?: string | null
+          category: string
           content: string
           copy_count?: number
           created_at?: string
+          created_by?: string | null
+          description?: string | null
+          difficulty_level?: string | null
+          dislike_count?: number | null
+          estimated_time?: string | null
           id?: string
           is_featured?: boolean
+          like_count?: number | null
           tags?: string[] | null
           title: string
           updated_at?: string
-          user_id: string
         }
         Update: {
-          category?: string | null
+          category?: string
           content?: string
           copy_count?: number
           created_at?: string
+          created_by?: string | null
+          description?: string | null
+          difficulty_level?: string | null
+          dislike_count?: number | null
+          estimated_time?: string | null
           id?: string
           is_featured?: boolean
+          like_count?: number | null
           tags?: string[] | null
           title?: string
           updated_at?: string
-          user_id?: string
         }
         Relationships: []
       }
       templates: {
         Row: {
-          category: string | null
+          category: string
           content: string
-          copy_count: number
           created_at: string
+          created_by: string | null
+          description: string | null
+          download_count: number | null
+          file_size: string | null
+          file_type: string | null
           id: string
+          like_count: number | null
           tags: string[] | null
           title: string
+          type: string
           updated_at: string
-          user_id: string
         }
         Insert: {
-          category?: string | null
+          category: string
           content: string
-          copy_count?: number
           created_at?: string
+          created_by?: string | null
+          description?: string | null
+          download_count?: number | null
+          file_size?: string | null
+          file_type?: string | null
           id?: string
+          like_count?: number | null
           tags?: string[] | null
           title: string
+          type: string
           updated_at?: string
-          user_id: string
         }
         Update: {
-          category?: string | null
+          category?: string
           content?: string
-          copy_count?: number
           created_at?: string
+          created_by?: string | null
+          description?: string | null
+          download_count?: number | null
+          file_size?: string | null
+          file_type?: string | null
           id?: string
+          like_count?: number | null
           tags?: string[] | null
           title?: string
+          type?: string
           updated_at?: string
-          user_id?: string
         }
         Relationships: []
       }
@@ -178,7 +235,6 @@ export type Database = {
           item_id: string
           item_type: string
           user_id: string
-          workflow_data: Json | null
         }
         Insert: {
           created_at?: string
@@ -187,7 +243,6 @@ export type Database = {
           item_id: string
           item_type: string
           user_id: string
-          workflow_data?: Json | null
         }
         Update: {
           created_at?: string
@@ -196,59 +251,32 @@ export type Database = {
           item_id?: string
           item_type?: string
           user_id?: string
-          workflow_data?: Json | null
         }
         Relationships: []
       }
       user_workflows: {
         Row: {
-          completed_at: string | null
-          completed_steps: number[] | null
           created_at: string
-          current_step: number
           id: string
-          started_at: string
-          status: string
           updated_at: string
           user_id: string
-          workflow_data: Json | null
-          workflow_id: string
+          workflow_data: Json
         }
         Insert: {
-          completed_at?: string | null
-          completed_steps?: number[] | null
           created_at?: string
-          current_step?: number
           id?: string
-          started_at?: string
-          status?: string
           updated_at?: string
           user_id: string
-          workflow_data?: Json | null
-          workflow_id: string
+          workflow_data: Json
         }
         Update: {
-          completed_at?: string | null
-          completed_steps?: number[] | null
           created_at?: string
-          current_step?: number
           id?: string
-          started_at?: string
-          status?: string
           updated_at?: string
           user_id?: string
-          workflow_data?: Json | null
-          workflow_id?: string
+          workflow_data?: Json
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_workflows_workflow_id_fkey"
-            columns: ["workflow_id"]
-            isOneToOne: false
-            referencedRelation: "workflows"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       workflows: {
         Row: {
