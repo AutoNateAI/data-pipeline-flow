@@ -5,8 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Set the base path for GitHub Pages deployment
-  base: mode === 'production' ? '/data-pipeline-flow/' : '/',
+  // Using root path '/' for custom domain (data-pipeline.autonateai.com)
+  base: '/',
   server: {
     host: "::",
     port: 8080,
